@@ -1,5 +1,6 @@
 package org.sylfra.idea.plugins.remotesynchronizer.ui.config;
 
+import com.intellij.ui.JBColor;
 import org.sylfra.idea.plugins.remotesynchronizer.model.Config;
 import org.sylfra.idea.plugins.remotesynchronizer.model.TargetMappings;
 import org.sylfra.idea.plugins.remotesynchronizer.utils.ConfigPathsManager;
@@ -156,7 +157,7 @@ public final class TargetTabbedPane extends JTabbedPane
   public Color getForegroundAt(int index)
   {
     TargetTab tab = (TargetTab) getComponentAt(index);
-    return tab.isSetAsActive() ? super.getForeground() : Color.gray;
+    return tab.isSetAsActive() ? super.getForeground() : JBColor.GRAY;
   }
 
   public void removeTarget()

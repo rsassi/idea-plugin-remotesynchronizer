@@ -1,6 +1,7 @@
 package org.sylfra.idea.plugins.remotesynchronizer.ui;
 
 import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.ui.JBColor;
 import org.sylfra.idea.plugins.remotesynchronizer.model.Config;
 import org.sylfra.idea.plugins.remotesynchronizer.model.ConfigListener;
 import org.sylfra.idea.plugins.remotesynchronizer.model.SyncronizingStatsInfo;
@@ -128,7 +129,7 @@ public class ThreadConsole extends JScrollPane
     StyleConstants.setBold(headerStyle, true);
 
     Style errorStyle = textPane.addStyle(ERROR_STYLE, defautStyle);
-    StyleConstants.setForeground(errorStyle, Color.red);
+    StyleConstants.setForeground(errorStyle, JBColor.RED);
   }
 
   public void updateTitle()

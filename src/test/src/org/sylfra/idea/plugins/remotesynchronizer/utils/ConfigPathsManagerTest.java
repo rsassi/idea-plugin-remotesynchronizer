@@ -11,7 +11,6 @@ public class ConfigPathsManagerTest extends TestCase
   public ConfigPathsManagerTest(String name)
   {
     super(name);
-    Config config = new ConfigSample().getConfig();
     pathsManager = new ConfigPathsManager(null)
     {
       public String getRelativePath(String path)

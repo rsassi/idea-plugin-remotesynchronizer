@@ -1,5 +1,6 @@
 package org.sylfra.idea.plugins.remotesynchronizer.ui.tables;
 
+import com.intellij.ui.JBColor;
 import org.sylfra.idea.plugins.remotesynchronizer.utils.ConfigPathsManager;
 import org.sylfra.idea.plugins.remotesynchronizer.utils.LabelsFactory;
 import org.sylfra.idea.plugins.remotesynchronizer.utils.PathsUtils;
@@ -223,11 +224,11 @@ public class AbstractPathTable extends JTable
 
       if (inProject)
       {
-        result.setForeground(Color.black);
+        result.setForeground(JBColor.BLACK);
       }
       else
       {
-        result.setForeground(Color.red);
+        result.setForeground(JBColor.RED);
         result.setText(result.getText()
           + " (" + LabelsFactory.get(LabelsFactory.MSG_PATH_NOT_IN_PROJECT)
           + ")");

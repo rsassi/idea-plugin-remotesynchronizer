@@ -337,8 +337,8 @@ public class ActionsHolder
         selectedFile = project.getBaseDir();
       }
 
-      VirtualFile[] virtualFiles =
-        FileChooser.chooseFiles(project, fcDescriptor, selectedFile);
+        VirtualFile[] virtualFiles =
+        FileChooser.chooseFiles(fcDescriptor, project, selectedFile);
       if (virtualFiles.length == 0)
       {
         return;

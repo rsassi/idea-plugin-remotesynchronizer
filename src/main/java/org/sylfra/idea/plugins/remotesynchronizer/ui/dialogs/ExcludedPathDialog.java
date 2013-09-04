@@ -42,7 +42,7 @@ public abstract class ExcludedPathDialog extends AbstractPathDialog
 
   protected void updateValueFromDialog()
   {
-    value = tfPath.getText().toString();
+    value = tfPath.getText();
   }
 
   protected boolean checkDialogValues()
