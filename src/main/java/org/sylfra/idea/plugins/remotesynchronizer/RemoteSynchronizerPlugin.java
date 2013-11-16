@@ -133,7 +133,7 @@ public class RemoteSynchronizerPlugin
     }
 
     public void disposeComponent() {
-        CompilerManager.getInstance(project).addCompilationStatusListener(compilationListener);
+        CompilerManager.getInstance(project).removeCompilationStatusListener(compilationListener);
     }
 
     public void projectOpened() {

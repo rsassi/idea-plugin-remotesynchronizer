@@ -12,7 +12,7 @@
         <li>Fix: Bug with some modules without output path</li>
       </ul>
     </html>]]></change-notes>
-
+  <depends optional="true" config-file="maven-support.xml">org.jetbrains.idea.maven</depends>
   <project-components>
     <component>
       <implementation-class>org.sylfra.idea.plugins.remotesynchronizer.RemoteSynchronizerPlugin</implementation-class>
