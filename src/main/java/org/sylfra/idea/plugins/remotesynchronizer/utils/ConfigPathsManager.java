@@ -88,7 +88,7 @@ public class ConfigPathsManager
       {
         return false;
       }
-      
+
       // Use getCompilerOutputXXXPointer since getCompilerOutputXXXPath return NULL when directory does not exist
       if ((isRelativePath(PathsUtils.toModelPath(cme.getCompilerOutputPointer().getPresentableUrl()), path))
         || (isRelativePath(PathsUtils.toModelPath(cme.getCompilerOutputForTestsPointer().getPresentableUrl()), path)))
@@ -100,22 +100,20 @@ public class ConfigPathsManager
     return false;
   }
 
-  public boolean isJavaSource(VirtualFile f)
-  {
-    if (!f.getName().endsWith(".java"))
-      return false;
-
-    VirtualFile[] vf = ProjectRootManager.getInstance(plugin.getProject()).getContentSourceRoots();
-
-    for (VirtualFile aVf : vf)
-    {
-      if (PathsUtils.isAncestor(aVf, f))
-      {
-        return true;
+  public boolean isJavaSource(VirtualFile f) {
+      if (f == null || !f.getName().endsWith(".java")) {
+          return false;
       }
-    }
 
-    return false;
+      VirtualFile[] vf = ProjectRootManager.getInstance(plugin.getProject()).getContentSourceRoots();
+
+      for (VirtualFile aVf : vf) {
+          if (PathsUtils.isAncestor(aVf, f)) {
+              return true;
+          }
+      }
+
+      return false;
   }
 
   public VirtualFile getProjectDefaultRoot()

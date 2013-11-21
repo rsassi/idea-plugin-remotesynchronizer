@@ -24,10 +24,12 @@ public class CompilationListener implements CompilationStatusListener {
         final VirtualFile[] virtualFiles = compiledFiles.toArray((new VirtualFile[compiledFiles.size()]));
         compiledFiles.clear();
 
-        // Sending synchronization order, in the UI thread
+        // Sending synchronization order, in the UI thread. Compiler context might be null if no SDK has been defined in the project
         UIUtil.invokeAndWaitIfNeeded(new Runnable() {
             public void run() {
-                Synchronizer.performSynchronization(RemoteSynchronizerPlugin.getInstance(compileContext.getProject()), virtualFiles);
+                if(compileContext != null){
+                    Synchronizer.performSynchronization(RemoteSynchronizerPlugin.getInstance(compileContext.getProject()), virtualFiles);
+                }
             }
         });
     }
