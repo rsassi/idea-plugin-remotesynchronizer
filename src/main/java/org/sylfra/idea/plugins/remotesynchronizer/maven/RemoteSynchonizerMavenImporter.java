@@ -123,6 +123,7 @@ public class RemoteSynchonizerMavenImporter extends MavenImporter {
     private TargetMappings addMavenTargetMappings(List<TargetMappings> targetMappings) {
         TargetMappings mavenMappings = new TargetMappings();
         mavenMappings.setActive(true);
+        mavenMappings.setExecuteOnCompile(true);
         mavenMappings.setName(MAVEN_TARGET_MAPPING_NAME);
         targetMappings.add(mavenMappings);
         return mavenMappings;

@@ -35,6 +35,7 @@ public class LabelsFactory
   public static final String FRAME_EXCLUDED_DELETE_PATH = "FRAME_EXCLUDED_DELETE_PATH";
   public static final String FRAME_INCLUDED_PATH = "FRAME_INCLUDED_PATH";
   public static final String LB_ACTIVE = "LB_ACTIVE";
+  public static final String LB_EXECUTE_ON_COMPILE = "LB_EXECUTE_ON_COMPILE";
   public static final String LB_ALLOW_CONCURRENT_RUNS = "LB_ALLOW_CONCURRENT_RUNS";
   public static final String LB_AUTO_POPUP_LOGS = "LB_AUTO_POPUP_LOGS";
   public static final String LB_CLEAR_BEFORE_SYNCHRO = "LB_CLEAR_BEFORE_SYNCHRO";

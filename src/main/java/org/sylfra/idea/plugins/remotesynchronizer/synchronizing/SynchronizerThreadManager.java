@@ -37,11 +37,13 @@ public class SynchronizerThreadManager
     /**
      * Invoked from an synchronization acton
      */
-    public void launchSynchronization(VirtualFile[] files) {
+    public void launchSynchronization(VirtualFile[] files, boolean fromCompilationListener) {
         for (TargetMappings targetMappings : plugin.getConfig().getTargetMappings()) {
             if (targetMappings.isActive()) {
-                SynchronizerThread thread = getNotNullAvailableThread(targetMappings);
-                thread.start(files);
+                if (!fromCompilationListener || (fromCompilationListener && targetMappings.isExecuteOnCompile())) {
+                    SynchronizerThread thread = getNotNullAvailableThread(targetMappings);
+                    thread.start(files);
+                }
             }
         }
     }

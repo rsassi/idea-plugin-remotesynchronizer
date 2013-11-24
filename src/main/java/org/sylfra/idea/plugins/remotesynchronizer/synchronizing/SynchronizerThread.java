@@ -336,7 +336,7 @@ public class SynchronizerThread {
         // Destination path not found
         if (destPath == null) {
             statsInfo.addExcluded();
-            UIUtil.invokeAndWaitIfNeeded(new Runnable() {
+            UIUtil.invokeLaterIfNeeded(new Runnable() {
                 public void run() {
                     listener.fileCopying(SynchronizerThread.this, srcPath, null, TYPE_COPY_EXCLUDED);
                 }
@@ -361,13 +361,13 @@ public class SynchronizerThread {
             if ((copyType == TYPE_COPY_IDENTICAL)
                   || (copyType == TYPE_COPY_NOCLASS)) {
                 statsInfo.addIgnored();
-                UIUtil.invokeAndWaitIfNeeded(new Runnable() {
+                UIUtil.invokeLaterIfNeeded(new Runnable() {
                     public void run() {
                         listener.fileCopying(SynchronizerThread.this, srcPath, destPath, copyType);
                     }
                 });
             } else {
-                UIUtil.invokeAndWaitIfNeeded(new Runnable() {
+                UIUtil.invokeLaterIfNeeded(new Runnable() {
                     public void run() {
                         listener.fileCopying(SynchronizerThread.this, srcPath, destPath, copyType);
                     }
@@ -416,7 +416,7 @@ public class SynchronizerThread {
      */
     protected void finished() {
         state = STATE_STOPPED;
-        UIUtil.invokeAndWaitIfNeeded(new Runnable() {
+        UIUtil.invokeLaterIfNeeded(new Runnable() {
             public void run() {
                 listener.threadFinished(SynchronizerThread.this, statsInfo);
             }

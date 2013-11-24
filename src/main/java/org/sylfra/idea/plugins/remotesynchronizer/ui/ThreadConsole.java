@@ -186,7 +186,7 @@ public class ThreadConsole extends JScrollPane
     }
 
     private void append(final String s, final String styleName) {
-        UIUtil.invokeAndWaitIfNeeded(new Runnable() {
+        UIUtil.invokeLaterIfNeeded(new Runnable() {
             public void run() {
                 try {
                     Document doc = textPane.getDocument();

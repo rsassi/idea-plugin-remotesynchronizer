@@ -101,8 +101,7 @@ public abstract class AbstractPathDialog extends DialogWrapper implements Dispos
           toSelect = pathManager.getProjectDefaultRoot();
         }
 
-        VirtualFile[] virtualFiles =
-                FileChooser.chooseFiles((Component) e.getSource(), fcDescriptor, toSelect);
+          VirtualFile[] virtualFiles = FileChooser.chooseFiles(fcDescriptor, pathManager.getPlugin().getProject(), toSelect);
 
         if (virtualFiles.length > 0)
         {

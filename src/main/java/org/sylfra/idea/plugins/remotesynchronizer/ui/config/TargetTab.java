@@ -28,6 +28,7 @@ public class TargetTab extends JPanel
   private int initialPos;
   private TargetMappings targetMappings;
   private JCheckBox cbActive;
+  private JCheckBox cbExecuteOnCompile;
   private SynchroPathsTable synchroTable;
   private ExcludedCopyPathsTable excludedCopyTable;
   private ExcludedDeletePathsTable excludedDeleteTable;
@@ -42,6 +43,7 @@ public class TargetTab extends JPanel
     synchroTable = new SynchroPathsTable(pathsManager);
     excludedCopyTable = new ExcludedCopyPathsTable();
     excludedDeleteTable = new ExcludedDeletePathsTable();
+    cbExecuteOnCompile = new JCheckBox(LabelsFactory.get(LabelsFactory.LB_EXECUTE_ON_COMPILE), targetMappings.isExecuteOnCompile());
     cbActive = new JCheckBox(LabelsFactory.get(LabelsFactory.LB_ACTIVE),
       targetMappings.isActive());
 
@@ -53,6 +55,7 @@ public class TargetTab extends JPanel
         tabbedPane.setForegroundAt(index, tabbedPane.getForegroundAt(index));
       }
     });
+
     reset();
     buildUI(pathsManager);
   }
@@ -75,6 +78,7 @@ public class TargetTab extends JPanel
   public boolean isModified(Config config)
   {
     return (cbActive.isSelected() != targetMappings.isActive())
+      || (cbExecuteOnCompile.isSelected() != targetMappings.isExecuteOnCompile())
       || (!Arrays.asList(targetMappings.getSynchroMappings())
       .equals(synchroTable.getData()))
       || (!Arrays.asList(targetMappings.getExcludedCopyPaths())
@@ -94,6 +98,7 @@ public class TargetTab extends JPanel
   public void apply()
   {
     targetMappings.setActive(cbActive.isSelected());
+    targetMappings.setExecuteOnCompile(cbExecuteOnCompile.isSelected());
     targetMappings.setSynchroMappings(synchroTable.getData()
       .toArray(new SynchroMapping[synchroTable.getData().size()]));
     targetMappings.setExcludedCopyPaths(excludedCopyTable.getData()
@@ -106,6 +111,8 @@ public class TargetTab extends JPanel
   {
     JPanel pnActive = new JPanel(new BorderLayout());
     pnActive.add(cbActive, BorderLayout.WEST);
+    JPanel pnExecComp = new JPanel(new BorderLayout());
+    pnExecComp.add(cbExecuteOnCompile, BorderLayout.WEST);
     JLabel xInfo = new JLabel("X : "
       + LabelsFactory.get(LabelsFactory.LB_DELETE_OBSOLETE));
     xInfo.setFont(xInfo.getFont().deriveFont(Font.ITALIC));
@@ -130,6 +137,9 @@ public class TargetTab extends JPanel
     c.weightx = 1.0;
     c.fill = GridBagConstraints.BOTH;
     add(pnActive, c);
+
+    c.gridy++;
+    add(pnExecComp, c);
 
     c.gridy++;
     c.weighty = 1.0;

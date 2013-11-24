@@ -13,13 +13,14 @@ import org.sylfra.idea.plugins.remotesynchronizer.utils.ConfigPathsManager;
  * @author Thomas Demande
  */
 public class Synchronizer {
-    public static void performSynchronization(RemoteSynchronizerPlugin plugin, VirtualFile[] files) {
+
+    public static void performSynchronization(RemoteSynchronizerPlugin plugin, VirtualFile[] files, boolean fromCompilationListener) {
         if (files == null)
             return;
 
         // Checks configuration allows concurent runs when a synchro is running
         if ((!plugin.getConfig().getGeneralOptions().isAllowConcurrentRuns())
-                && (plugin.getCopierThreadManager().hasRunningSynchro())) {
+              && (plugin.getCopierThreadManager().hasRunningSynchro())) {
             plugin.getConsolePane().doPopup();
             return;
         }
@@ -31,7 +32,11 @@ public class Synchronizer {
             refreshVfsIfJavaSelected(files, plugin.getPathManager());
 
         SynchronizerThreadManager manager = plugin.getCopierThreadManager();
-        manager.launchSynchronization(files);
+        manager.launchSynchronization(files, fromCompilationListener);
+    }
+
+    public static void performSynchronization(RemoteSynchronizerPlugin plugin, VirtualFile[] files) {
+        performSynchronization(plugin, files, false);
     }
 
     public static void performSynchronization(VirtualFile[] virtualFiles) {
