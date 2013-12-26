@@ -463,12 +463,12 @@ public class ConfigPathsManager
     public synchronized String getRemotePath(TargetMappings target,
       String path)
     {
-      return (String) ((Map[]) caches.get(target))[0].get(path);
+      return (String) (caches.get(target))[0].get(path);
     }
 
     public synchronized String getSrcPath(TargetMappings target, String path)
     {
-      return (String) ((Map[]) caches.get(target))[1].get(path);
+      return (String) (caches.get(target))[1].get(path);
     }
 
     public synchronized void storeRemotePath(TargetMappings target, String path,

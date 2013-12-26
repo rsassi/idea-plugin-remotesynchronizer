@@ -1,6 +1,7 @@
 package org.sylfra.idea.plugins.remotesynchronizer.utils;
 
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.util.io.FileUtil;
 import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VfsUtil;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -37,13 +38,11 @@ public class PathsUtils
     File childFile = new File(childPath);
     File parentFile = new File(parentPath);
 
-    while (childFile != null)
-    {
-      if (childFile.equals(parentFile))
-      {
-        return true;
-      }
-      childFile = childFile.getParentFile();
+    while (childFile != null) {
+        if (FileUtil.filesEqual(childFile, parentFile)) {
+            return true;
+        }
+        childFile = childFile.getParentFile();
     }
 
     return false;

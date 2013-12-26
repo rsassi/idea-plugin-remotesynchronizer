@@ -15,6 +15,7 @@ import com.intellij.openapi.wm.ToolWindowManager;
 import com.intellij.ui.content.Content;
 import com.intellij.ui.content.ContentFactory;
 import org.jdom.Element;
+import org.jetbrains.annotations.NotNull;
 import org.sylfra.idea.plugins.remotesynchronizer.listener.CompilationListener;
 import org.sylfra.idea.plugins.remotesynchronizer.model.Config;
 import org.sylfra.idea.plugins.remotesynchronizer.synchronizing.SynchronizerThreadManager;
@@ -143,6 +144,7 @@ public class RemoteSynchronizerPlugin
     public void projectClosed() {
     }
 
+    @NotNull
     public String getComponentName() {
         return PLUGIN_NAME + "Component";
     }

@@ -1,5 +1,6 @@
 package org.sylfra.idea.plugins.remotesynchronizer.ui.config;
 
+import com.intellij.ui.components.JBScrollPane;
 import org.sylfra.idea.plugins.remotesynchronizer.model.Config;
 import org.sylfra.idea.plugins.remotesynchronizer.model.SynchroMapping;
 import org.sylfra.idea.plugins.remotesynchronizer.model.TargetMappings;
@@ -158,7 +159,7 @@ public class TargetTab extends JPanel
   {
     // Paths table
     JPanel pnTable = new JPanel(new BorderLayout());
-    JScrollPane scrollPane = new JScrollPane(table);
+    JScrollPane scrollPane = new JBScrollPane(table);
     scrollPane.getViewport().setPreferredSize(
       new Dimension(
         (int) pnTable.getPreferredSize().getHeight(),

@@ -65,20 +65,20 @@ public abstract class ExcludedPathDialog extends AbstractPathDialog
 
     c.gridx = 0;
     c.gridy = 0;
-    c.anchor = c.SOUTHWEST;
+    c.anchor = GridBagConstraints.SOUTHWEST;
     c.insets = new Insets(5, 5, 0, 0);
     JLabel lb = new JLabel(label);
     panel.add(lb, c);
 
     c.gridy++;
     c.weightx = 1.0;
-    c.fill = c.HORIZONTAL;
+    c.fill = GridBagConstraints.HORIZONTAL;
     c.insets = new Insets(0, 5, 0, 5);
     panel.add(tfPath, c);
 
     c.gridx++;
     c.weightx = 0.0;
-    c.fill = c.NONE;
+    c.fill = GridBagConstraints.NONE;
     c.insets = new Insets(0, 0, 0, 5);
     JButton bnBrowse = createBrowseButton(tfPath, true);
     panel.add(bnBrowse, c);

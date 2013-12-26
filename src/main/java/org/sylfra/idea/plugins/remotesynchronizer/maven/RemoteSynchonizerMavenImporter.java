@@ -62,7 +62,7 @@ public class RemoteSynchonizerMavenImporter extends MavenImporter {
     }
 
     private boolean shouldSkipRemoteSyncForProject(MavenProject mavenProject) {
-        if (mavenProject.getProperties().getProperty(REMOTE_SYNCHRONIZER_SKIP_PROPERTY) != null && mavenProject.getProperties().getProperty(REMOTE_SYNCHRONIZER_SKIP_PROPERTY).equals("true")) {
+        if ("true".equals(mavenProject.getProperties().getProperty(REMOTE_SYNCHRONIZER_SKIP_PROPERTY))) {
             return true;
         }
         return false;
@@ -73,12 +73,8 @@ public class RemoteSynchonizerMavenImporter extends MavenImporter {
     }
 
     private boolean isRemoteSyncEnabled(MavenProject mavenProject) {
-        if (mavenProject.getProperties().getProperty(REMOTE_SYNCHRONIZER_TARGET_PROPERTY) == null) {
-            return false;
-        } else {
-            return true;
-
-        }
+        //We rely on the REMOTE_SYNCHRONIZER_TARGET_PROPERTY Maven property to be set for knowing we should enable remote sync
+        return mavenProject.getProperties().getProperty(REMOTE_SYNCHRONIZER_TARGET_PROPERTY) != null;
     }
 
     private String getSourceDirectoryForProject(MavenProject mavenProject) {

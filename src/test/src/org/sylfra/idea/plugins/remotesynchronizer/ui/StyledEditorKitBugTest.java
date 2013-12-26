@@ -27,7 +27,7 @@ public class StyledEditorKitBugTest extends JFrame
 
   private void buildUI()
   {
-    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
     Container cp = getContentPane();
     cp.setLayout(new BorderLayout());
